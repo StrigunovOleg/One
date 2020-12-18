@@ -44,6 +44,7 @@
 		body {
 			text-align: center;
 			font: 13px Arial,Helvetica;
+      background: #e5ecf0;
 		}
 
 		/* Относительное позиционирование */
@@ -51,9 +52,7 @@
 			position: relative;
 			margin: 50px auto 20px auto;
 			border: 1px solid #fafafa;
-			-moz-box-shadow: 0 3px 3px rgba(0,0,0,.5);
-			-webkit-box-shadow: 0 3px 3px rgba(0,0,0,.5);
-			box-shadow: 0 3px 3px rgba(0,0,0,.5);
+      background: #e5ecf0;
 		}
 
 		/* Скрываем оригинальное содержание подсказки */
@@ -62,59 +61,47 @@
 		}
 
 		/* Стили для подсказкии и метки */
-		.tooltip-up, .tooltip-down {
+		.tooltip-down {
 			position: absolute;
 			background: url(arrow-up-down.png);
-			width: 36px;
-			height: 52px;
+			width: 40px;
+			height: 40px;
+      cursor: pointer;
 		}
 
-		.tooltip-down {
-			background-position: 0 -52px;
+		.tooltip-down:hover {
+      background: url(arrow3.png);
 		}
 
 		.tooltip {
 			display: none;
-			width: 200px;
-			cursor: help;
-			text-shadow: 0 1px 0 #fff;
+			width: 190px;
+      height: 38px;
+      font: 700 12px/19px Arial,Helvetica;
+      text-align: left;
+      padding: 1px;
+			cursor: pointer;
 			position: absolute;
-			top: 10px;
-			left: 50%;
+			top: 0px;
+			left: 40px;
 			z-index: 999;
-			margin-left: -115px;
-			padding:15px;
+			margin-left:0px;
+			padding-left:10px;
 			color: #222;
-			-moz-border-radius: 5px;
-			-webkit-border-radius: 5px;
-			border-radius: 5px;
-			background: #fff1d3;
-			background: -webkit-gradient(linear, left top, left bottom, from(#fff1d3), to(#ffdb90));
-			background: -webkit-linear-gradient(top, #fff1d3, #ffdb90);
-			background: -moz-linear-gradient(top, #fff1d3, #ffdb90);
-			background: -ms-linear-gradient(top, #fff1d3, #ffdb90);
-			background: -o-linear-gradient(top, #fff1d3, #ffdb90);
-			background: linear-gradient(top, #fff1d3, #ffdb90);
+			background: #fff;
+
 		}
 
 		.tooltip::after {
-			content: '';
-			position: absolute;
-			top: -10px;
-			left: 50%;
-			margin-left: -10px;
-			border-bottom: 10px solid #fff1d3;
-			border-left: 10px solid transparent;
-			border-right :10px solid transparent;
+
 		}
 
 		.tooltip-down .tooltip {
-			bottom: 12px;
+
 			top: auto;
 		}
 
 		.tooltip-down .tooltip::after {
-			bottom: -10px;
 			top: auto;
 			border-bottom: 0;
 			border-top: 10px solid #ffdb90;
@@ -138,26 +125,23 @@
 
 <body>
 
-<div id="result">
-
-</div>
 <div id="wrapper">
    <img width="740" height="560" src="home.png" alt="Дом">
 
    <div class="pin pin-down" data-xpos="170" data-ypos="60">
-	  <h2>Конструкция крыши</h2>
+	  <h2>Конструкция<br /> крыши</h2>
    </div>
 
    <div class="pin pin-down" data-xpos="600" data-ypos="100">
-	  <h2>Конструкция фронтона</h2>
+	  <h2>Конструкция<br /> фронтона</h2>
    </div>
 
    <div class="pin pin-down" data-xpos="450" data-ypos="110">
 	  <h2>Конструкция чердачного перекрытия</h2>
    </div>
 
-   <div class="pin" data-xpos="450" data-ypos="240">
-	  <h2>Конструкция перегородок</h2>
+   <div class="pin pin-down" data-xpos="450" data-ypos="240">
+	  <h2>Конструкция<br /> перегородок</h2>
    </div>
 
    <div class="pin pin-down" data-xpos="600" data-ypos="250">
@@ -165,7 +149,7 @@
    </div>
 
    <div class="pin pin-down" data-xpos="400" data-ypos="350">
-	  <h2>Конструкция пола</h2>
+	  <h2>Конструкция<br /> пола</h2>
    </div>
 
 </div>
