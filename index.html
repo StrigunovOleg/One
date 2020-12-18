@@ -1,43 +1,186 @@
 <!DOCTYPE html>
-
 <html>
+<head>
+    <title>Home</title>
+	<meta charset="utf-8">
+    <script src="jquery-1.6.3.min.js"></script>
 
- <head>
+    <script>
+		$(document).ready(function(){
 
- <meta charset=”UTF-8”>
+			// Устанавливаем ширину и высоту контейнера в соответствии с размерами изображения
+			$('#wrapper').css({'width':$('#wrapper img').width(),
+							  'height':$('#wrapper img').height()
+			})
 
- <title>HTML структура документа</title>
- <link rel="stylesheet" type="text/css" href="style.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;0,900;1,100&display=swap" rel="stylesheet">
- </head>
+			//Направление символа подсказки
+			var tooltipDirection;
 
- <body>
+			for (i=0; i<$(".pin").length; i++)
+			{
+				// Устанавливаем направление символа подсказки - вверх или вниз
+				if ($(".pin").eq(i).hasClass('pin-down')) {
+					tooltipDirection = 'tooltip-down';
+				} else {
+					tooltipDirection = 'tooltip-up';
+					}
 
-<header>
-<div>app.creation</div>
+				// Добавляем подсказку
+				$("#wrapper").append("<div style='left:"+$(".pin").eq(i).data('xpos')+"px;top:"+$(".pin").eq(i).data('ypos')+"px' class='" + tooltipDirection +"'>\
+													<div class='tooltip'>" + $(".pin").eq(i).html() + "</div>\
+											</div>");
+			}
 
-<nav>
-	<a href="">start</a>
-	<a href="">services</a>
-	<a href="">about</a>
-	<a href="">blog</a>
-	<a href="">contact us</a>
-</nav>
-</header>
+			// Выводим/скрываем подсказку
+			$('.tooltip-up, .tooltip-down').mouseenter(function(){
+						$(this).children('.tooltip').fadeIn(100);
+					}).mouseleave(function(){
+						$(this).children('.tooltip').fadeOut(100);
+					})
+		});
 
-<section>
+    </script>
+	<style>
+		body {
+			text-align: center;
+			font: 13px Arial,Helvetica;
+		}
 
-	<main>
-		<h1 class="title">Building an App Without Design Expertise?</h1>
-		<p>I help tech startups design better digital products without hiring a full-time designer</p>
-		<button>Schedule free consultation</button>
-	</main>
+		/* Относительное позиционирование */
+		#wrapper {
+			position: relative;
+			margin: 50px auto 20px auto;
+			border: 1px solid #fafafa;
+			-moz-box-shadow: 0 3px 3px rgba(0,0,0,.5);
+			-webkit-box-shadow: 0 3px 3px rgba(0,0,0,.5);
+			box-shadow: 0 3px 3px rgba(0,0,0,.5);
+		}
 
-	<div>
-		<img src="" />
-	</div>
+		/* Скрываем оригинальное содержание подсказки */
+		.pin {
+			display: none;
+		}
 
-</section>
- </body>
+		/* Стили для подсказкии и метки */
+		.tooltip-up, .tooltip-down {
+			position: absolute;
+			background: url(arrow-up-down.png);
+			width: 36px;
+			height: 52px;
+		}
+
+		.tooltip-down {
+			background-position: 0 -52px;
+		}
+
+		.tooltip {
+			display: none;
+			width: 200px;
+			cursor: help;
+			text-shadow: 0 1px 0 #fff;
+			position: absolute;
+			top: 10px;
+			left: 50%;
+			z-index: 999;
+			margin-left: -115px;
+			padding:15px;
+			color: #222;
+			-moz-border-radius: 5px;
+			-webkit-border-radius: 5px;
+			border-radius: 5px;
+			background: #fff1d3;
+			background: -webkit-gradient(linear, left top, left bottom, from(#fff1d3), to(#ffdb90));
+			background: -webkit-linear-gradient(top, #fff1d3, #ffdb90);
+			background: -moz-linear-gradient(top, #fff1d3, #ffdb90);
+			background: -ms-linear-gradient(top, #fff1d3, #ffdb90);
+			background: -o-linear-gradient(top, #fff1d3, #ffdb90);
+			background: linear-gradient(top, #fff1d3, #ffdb90);
+		}
+
+		.tooltip::after {
+			content: '';
+			position: absolute;
+			top: -10px;
+			left: 50%;
+			margin-left: -10px;
+			border-bottom: 10px solid #fff1d3;
+			border-left: 10px solid transparent;
+			border-right :10px solid transparent;
+		}
+
+		.tooltip-down .tooltip {
+			bottom: 12px;
+			top: auto;
+		}
+
+		.tooltip-down .tooltip::after {
+			bottom: -10px;
+			top: auto;
+			border-bottom: 0;
+			border-top: 10px solid #ffdb90;
+		}
+
+		.tooltip h2 {
+			font: bold 1.3em 'Trebuchet MS', Tahoma, Arial;
+			margin: 0 0 10px;
+		}
+
+		.tooltip ul {
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+	</style>
+
+
+
+</head>
+
+<body>
+
+<div id="result">
+
+</div>
+<div id="wrapper">
+   <img width="740" height="560" src="home.png" alt="Дом">
+
+   <div class="pin pin-down" data-xpos="170" data-ypos="60">
+	  <h2>Конструкция крыши</h2>
+   </div>
+
+   <div class="pin pin-down" data-xpos="600" data-ypos="100">
+	  <h2>Конструкция фронтона</h2>
+   </div>
+
+   <div class="pin pin-down" data-xpos="450" data-ypos="110">
+	  <h2>Конструкция чердачного перекрытия</h2>
+   </div>
+
+   <div class="pin" data-xpos="450" data-ypos="240">
+	  <h2>Конструкция перегородок</h2>
+   </div>
+
+   <div class="pin pin-down" data-xpos="600" data-ypos="250">
+	  <h2>Конструкция внешних стен</h2>
+   </div>
+
+   <div class="pin pin-down" data-xpos="400" data-ypos="350">
+	  <h2>Конструкция пола</h2>
+   </div>
+
+</div>
+
+
+
+<!--
+<script src="./script.js" type="text/javascript"></script>
+
+-->
+
+
+
+
+
+</body>
 
 </html>
